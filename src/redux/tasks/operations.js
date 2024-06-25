@@ -28,6 +28,7 @@ export const addTask = createAsyncThunk(
         }
     }
 );
+
 export const deleteTask = createAsyncThunk(
     'tasks/deleteTask',
     async (taskId, thunkAPI) => {
@@ -39,6 +40,7 @@ export const deleteTask = createAsyncThunk(
         }
     }
 );
+
 export const toggleCompleted = createAsyncThunk(
     'tasks/toggleCompleted',
     async (task, thunkAPI) => {

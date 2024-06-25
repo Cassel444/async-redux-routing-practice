@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Task } from "../Task/Task";
 import css from "./TaskList.module.css";
-import { selectVisibleTasks } from "../../redux/selectors";
+import { selectVisibleTasks } from "../../redux/filter/selectors";
 
-export const TaskList = () => {
+export default function TaskList() {
   const tasks = useSelector(selectVisibleTasks);
 
   return (
@@ -15,4 +15,4 @@ export const TaskList = () => {
       ))}
     </ul>
   );
-};
+}

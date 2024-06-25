@@ -1,27 +1,25 @@
-import { Layout } from "./Layout/Layout";
-import { AppBar } from "./AppBar/AppBar";
-import { TaskForm } from "./TaskForm/TaskForm";
-import { TaskList } from "./TaskList/TaskList";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchTasks } from "../redux/operations";
-import { selectError, selectIsLoading } from "../redux/selectors";
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import Layout from "./Layout/Layout";
 
-export const App = () => {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+const HomePage = lazy(() => import("../pages/Home"));
+const RegisterPage = lazy(() => import("../pages/Register"));
+const LoginPage = lazy(() => import("../pages/Login"));
+const TasksPage = lazy(() => import("../pages/Task"));
 
-  useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
+export default function App() {
   return (
     <Layout>
-      <AppBar />
-      <TaskForm />
-      {error && <b>Ooops... something went wrong</b>}
-      {isLoading && <b>Loading task...</b>}
-      <TaskList />
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/tasks" element={<TasksPage />} />
+        </Routes>
+      </Suspense>
+      <Toaster />
     </Layout>
   );
-};
+}
