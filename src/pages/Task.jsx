@@ -4,6 +4,7 @@ import TaskForm from "../components/TaskForm/TaskForm";
 import TaskList from "../components/TaskList/TaskList";
 import { TaskCounter } from "../components/TaskCounter/TaskCounter";
 import { StatusFilter } from "../components/StatusFilter/StatusFilter";
+import PageTitle from "../components/PageTitle/PageTitle";
 
 import { fetchTasks } from "../redux/tasks/operations";
 import { selectError, selectIsLoading } from "../redux/filter/selectors";
@@ -19,9 +20,9 @@ export default function Tasks() {
 
   return (
     <>
-      <h2>Tasks</h2>
+      <PageTitle>Tasks</PageTitle>
       <TaskCounter />
-      <h2>Filter by status</h2>
+      <PageTitle>Filter by status</PageTitle>
       <StatusFilter />
       <TaskForm />
       {error && <b>Ooops... something went wrong</b>}
