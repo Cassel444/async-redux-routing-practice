@@ -19,16 +19,10 @@ export default function Tasks() {
 
   return (
     <>
-      <header>
-        <section>
-          <h2>Tasks</h2>
-          <TaskCounter />
-        </section>
-        <section>
-          <h2>Filter by status</h2>
-          <StatusFilter />
-        </section>
-      </header>
+      <h2>Tasks</h2>
+      <TaskCounter />
+      <h2>Filter by status</h2>
+      <StatusFilter />
       <TaskForm />
       {error && <b>Ooops... something went wrong</b>}
       {isLoading && <b>Loading task...</b>}
